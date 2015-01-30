@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="lib/message/msgpack-0.6.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-codec-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/atlassian/jira-rest-java-client-1.1-ide-m06.jar"/>
+	<classpathentry kind="lib" path="lib/mail/mail-1.4.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
