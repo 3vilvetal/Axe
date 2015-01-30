@@ -16,8 +16,8 @@ import com.atlassian.jira.rest.client.internal.jersey.JerseyJiraRestClientFactor
 
 public class Jira {
 	
-	public static String userName = "vlopushanskyi",
-						 password = "vL$*(901f";
+	public static String userName = "",
+						 password = "";
 	
 	/**
 	 * Sample of JIRA API

@@ -8,8 +8,8 @@ import system.xml.XmlParser;
 
 public class Bamboo {
 	
-	public static String userName = "vlopushanskyi",
-			 			 password = "vL$*(901f";
+	public static String userName = "",
+			 			 password = "";
 	
 	/**
 	 * Sample of BAMBOO API

@@ -69,7 +69,7 @@ public class ReadEmails
           
           do
           {
-          	    store.connect(server, email, password);//"pop3.ukr.net","3vil1@ukr.net","111111");
+          	    store.connect(server, email, password);
           	    //Get a handle on the default folder
           	    folder = store.getDefaultFolder();
           	    // Retrieve the "Inbox"
