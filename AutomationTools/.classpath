@@ -6,5 +6,7 @@
 	<classpathentry kind="lib" path="lib/excel/jxl.jar"/>
 	<classpathentry kind="lib" path="lib/http/httpcore-4.3.jar"/>
 	<classpathentry kind="lib" path="lib/http/httpclient-4.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/message/msgpack-0.6.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-codec-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
