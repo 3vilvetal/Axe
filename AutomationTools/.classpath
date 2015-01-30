@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="lib/commons-codec-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/atlassian/jira-rest-java-client-1.1-ide-m06.jar"/>
 	<classpathentry kind="lib" path="lib/mail/mail-1.4.2.jar"/>
+	<classpathentry kind="lib" path="lib/sql/jsch-0.1.44.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
