@@ -20,7 +20,7 @@ public class Ant
 	{
 		File buildFile = new File(BUILD_FILE);
 		Project project = new Project();
-		project.setUserProperty("ant.file", buildFile.getAbsolutePath());		
+		project.setUserProperty("ant.file", buildFile.getAbsolutePath());
 		
 		DefaultLogger consoleLogger = new DefaultLogger();
 		consoleLogger.setErrorPrintStream(System.err);
