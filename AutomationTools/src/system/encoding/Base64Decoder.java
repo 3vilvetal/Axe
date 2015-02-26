@@ -48,7 +48,7 @@ public class Base64Decoder
 		String string = "";
 		File file = new File (fileName);
 
-		BufferedReader input;
+		BufferedReader input = null;
 		String data = "", temp = ""; 
 	        
 		try 
@@ -77,6 +77,11 @@ public class Base64Decoder
 	      	   string += decodeBase64(st.nextToken());
 		}
 		
+		try {
+			input.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return string;
 	}
 }
