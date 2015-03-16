@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
+
 import javax.mail.Flags;
 import javax.mail.Folder;
 import javax.mail.Message;
@@ -13,11 +14,83 @@ import javax.mail.Multipart;
 import javax.mail.Part;
 import javax.mail.Session;
 import javax.mail.Store;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
-public class GmailUtilities 
-{
+public class GmailEmail {
+	
 	/**
-	 * Method return text from all message in current user (gmail)
+     * Sample
+     * @param args
+     */
+    public static void main(String[] args) {
+    	
+        String from = "from@gmail.com";
+        String pass = "*********";
+        //list of recipient email addresses 
+        String [] to = {"to@gmail.com"};     
+        String subject = "Hello world subject";
+        String body = "Welcome to email hello world!";
+        
+        GmailEmail email = new GmailEmail();
+        email.sendEmail(from, pass, to, subject, body);
+    }
+	
+	/**
+     * Send email via GMAIL service
+     * @param from
+     * @param pass
+     * @param to
+     * @param subject
+     * @param body
+     */
+    public void sendEmail(String from, String pass, String[] to, String subject, String body) {
+        Properties props = System.getProperties();
+        String host = "smtp.gmail.com";
+        
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.user", from);
+        props.put("mail.smtp.password", pass);
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+
+        Session session = Session.getDefaultInstance(props);
+        MimeMessage message = new MimeMessage(session);
+
+        try {
+            message.setFrom(new InternetAddress(from));
+            InternetAddress[] toAddress = new InternetAddress[to.length];
+
+            // To get the array of addresses
+            for( int i = 0; i < to.length; i++ ) {
+                toAddress[i] = new InternetAddress(to[i]);
+            }
+
+            for( int i = 0; i < toAddress.length; i++) {
+                message.addRecipient(Message.RecipientType.TO, toAddress[i]);
+            }
+
+            message.setSubject(subject);
+            message.setText(body);
+            
+            Transport transport = session.getTransport("smtp");
+            transport.connect(host, from, pass);
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
+        }
+        catch (AddressException ae) {
+            ae.printStackTrace();
+        }
+        catch (MessagingException me) {
+            me.printStackTrace();
+        }
+    }
+    
+    /**
+	 * Method return text from all message in current user
 	 */
 	public String reciveEmail(String username, String password)
 	{
@@ -108,7 +181,13 @@ public class GmailUtilities
 		}
 		return text; 
 	}
-	public void deleteAllMail(String username,String password)
+	
+	/**
+	 * Remove all email messages
+	 * @param username
+	 * @param password
+	 */
+	public void deleteAllMail(String username, String password)
 	{
 		try
 		{
